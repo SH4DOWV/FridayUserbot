@@ -15,22 +15,22 @@ async def cmd_list(event):
                     string += "\n"
                 string += "\n"
             if len(string) > 4095:
-                await borg.send_message(event.chat_id, "Do .help cmd")
+                await borg.send_message(event.chat_id, "Fai .help Plugin")
                 await asyncio.sleep(5)
             else:
                 await event.edit(string)
         elif input_str:
             if input_str in CMD_LIST:
-                string = "Commands found in {}:\n".format(input_str)
+                string = "Comandi trovati in {}:\n".format(input_str)
                 for i in CMD_LIST[input_str]:
                     string += "    " + i
                     string += "\n"
                 await event.edit(string)
             else:
-                await event.edit(input_str + " is not a valid plugin!")
+                await event.edit(input_str + " non è un Plugin valido!")
         else:
-            help_string = """Friday Userbot Modules Are Listed Here !\n
-For More Help or Support Visit @FridayOT"""
+            help_string = """Plugin presenti nel bot !\n
+Per Informazioni scrivetemi in Privato."""
             results = await bot.inline_query(  # pylint:disable=E0602
                 tgbotusername, help_string
             )

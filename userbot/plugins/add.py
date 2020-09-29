@@ -1,27 +1,27 @@
-"""Invite the user(s) to the current chat
-Syntax: .invite <User(s)>"""
+"""Invitea gli utenti nel seguente Gruppo   
+Comando: .invita <Utenti>"""
 
 from telethon import functions
 
 from userbot.utils import admin_cmd
 
-"""Invite the user(s) to the current chat
-Syntax: .invite <User(s)>"""
+"""Invita gli utenti nel seguente gruppo
+Comando: .invita <Utente/i>"""
 
 from telethon import functions
 
 from userbot.utils import admin_cmd, edit_or_reply, sudo_cmd
 
 
-@borg.on(admin_cmd(pattern="invite ?(.*)"))
-@borg.on(sudo_cmd(pattern="invite ?(.*)", allow_sudo=True))
+@borg.on(admin_cmd(pattern="invita ?(.*)"))
+@borg.on(sudo_cmd(pattern="invita ?(.*)", allow_sudo=True))
 async def _(event):
     if event.fwd_from:
         return
     to_add_users = event.pattern_match.group(1)
     if event.is_private:
         await edit_or_reply(
-            event, "`.invite` users to a chat, not to a Private Message"
+            event, "`.invita` nel gruppo, non in Privata!"
         )
     else:
         logger.info(to_add_users)
@@ -36,7 +36,7 @@ async def _(event):
                     )
                 except Exception as e:
                     await event.reply(str(e))
-            await event.edit("Invited Successfully")
+            await event.edit("Invitati con Successo!")
         else:
             # https://lonamiwebs.github.io/Telethon/methods/channels/invite_to_channel.html
             for user_id in to_add_users.split(" "):
@@ -48,4 +48,4 @@ async def _(event):
                     )
                 except Exception as e:
                     await event.reply(str(e))
-            await edit_or_reply(event, "Invited Successfully")
+            await edit_or_reply(event, "Invitati con Successo!")

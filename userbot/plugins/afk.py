@@ -1,5 +1,5 @@
-"""AFK Plugin for @FridayOT
-Syntax: .afk REASON"""
+"""AFK Plugin 
+Comando: .afk MOTIVO"""
 import asyncio
 import datetime
 from datetime import datetime
@@ -46,16 +46,16 @@ async def _(event):
         USER_AFK = f"yes: {reason}"  # pylint:disable=E0602
         if reason:
             await borg.send_message(
-                event.chat_id, f"**My Master Is Going ** ~~because~~ Of __{reason}__"
+                event.chat_id, f"**𝙎𝙝𝙖𝙙𝙤𝙬 è attualmente Offline!/n/n ** Motivo:  __{reason}__"
             )
         else:
-            await borg.send_message(event.chat_id, f"**Bye :) Me Going Afk !**")
+            await borg.send_message(event.chat_id, f"**Sto Andando AFK !**")
         await asyncio.sleep(5)
         await event.delete()
         try:
             await borg.send_message(  # pylint:disable=E0602
                 Config.PRIVATE_GROUP_ID,  # pylint:disable=E0602
-                f"#AfkLogger Afk Is Active And Reason is {reason}",
+                f"#AfkLog AFK attivato, motivo: {reason}",
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             logger.warn(str(e))  # pylint:disable=E0602
@@ -76,21 +76,21 @@ async def set_not_afk(event):
     if ".afk" not in current_message and "yes" in USER_AFK:  # pylint:disable=E0602
         shite = await borg.send_message(
             event.chat_id,
-            "__Pro is Back Alive__\n**No Longer afk.**\n `I Was afk for:``"
+            "__𝙎𝙝𝙖𝙙𝙤𝙬 è di nuovo Online!__\n**Non sono più AFK.**\n `Sono rimasto AFK per:``"
             + total_afk_time
             + "`",
         )
         try:
             await borg.send_message(  # pylint:disable=E0602
                 Config.PRIVATE_GROUP_ID,  # pylint:disable=E0602
-                "#AfkLogger User is Back Alive ! No Longer Afk ",
+                "#AfkLog 𝙎𝙝𝙖𝙙𝙤𝙬, non è più AFK! ",
             )
         except Exception as e:  # pylint:disable=C0103,W0703
             await borg.send_message(  # pylint:disable=E0602
                 event.chat_id,
-                "Please set `PRIVATE_GROUP_ID` "
-                + "for the proper functioning of afk functionality "
-                + "Please Seek Support in @FridayOT\n\n `{}`".format(str(e)),
+                "Per favore, inserisci `PRIVATE_GROUP_ID` "
+                + "per la corretta funzione del Plugin "
+                + "\n\n `{}`".format(str(e)),
                 reply_to=event.message.id,
                 silent=True,
             )
@@ -117,7 +117,7 @@ async def on_afk(event):
     afk_end = back_alivee.replace(microsecond=0)
     if afk_start != {}:
         total_afk_time = str((afk_end - afk_start))
-    afk_since = "**a while ago**"
+    afk_since = "**da un po'**"
     current_message_text = event.message.message.lower()
     if "afk" in current_message_text:
         # userbot's should not reply to other userbot's
@@ -136,7 +136,7 @@ async def on_afk(event):
             time %= 60
             seconds = time
             if days == 1:
-                afk_since = "**Yesterday**"
+                afk_since = "**Ieri**"
             elif days > 1:
                 if days > 6:
                     date = now + datetime.timedelta(
@@ -147,17 +147,17 @@ async def on_afk(event):
                     wday = now + datetime.timedelta(days=-days)
                     wday.strftime("%A")
             elif hours > 1:
-                f"`{int(hours)}h{int(minutes)}m` **ago**"
+                f"`{int(hours)}h{int(minutes)}m` **fa**"
             elif minutes > 0:
-                f"`{int(minutes)}m{int(seconds)}s` **ago**"
+                f"`{int(minutes)}m{int(seconds)}s` **fa**"
             else:
-                f"`{int(seconds)}s` **ago**"
+                f"`{int(seconds)}s` **fa**"
         msg = None
         message_to_reply = (
-            f"**My Master is Afk**  \nAFKT : `{total_afk_time}`\nReason : {reason}"
-            + f"\n\n~~He Will Reply To You Soon!~~"
+            f"**𝙎𝙝𝙖𝙙𝙤𝙬 è Afk**  \nAFK per : `{total_afk_time}`\nMotivo : {reason}"
+            + f"\n\n~~Ti risponderò presto!~~"
             if reason
-            else f"**My Master is Afk**\n AFK : `{total_afk_time}` ~~He Will Comeback Soon~~"
+            else f"**𝙎𝙝𝙖𝙙𝙤𝙬 è Afk**\n AFK per : `{total_afk_time}` ~~Tornerò presto!~~"
         )
         msg = await event.reply(message_to_reply)
         await asyncio.sleep(5)

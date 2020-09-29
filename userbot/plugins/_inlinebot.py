@@ -5,7 +5,7 @@ from telethon import custom, events, Button
 from userbot import ALIVE_NAME
 from userbot import CMD_LIST
 
-DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "Friday"
+DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else "𝙎𝙝𝙖𝙙𝙤𝙬"
 if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
 
     @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
@@ -13,23 +13,21 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
         builder = event.builder
         result = None
         query = event.text
-        if event.query.user_id == bot.uid and query.startswith("Friday"):
+        if event.query.user_id == bot.uid and query.startswith("𝙎𝙝𝙖𝙙𝙤𝙬"):
             rev_text = query[::-1]
             buttons = paginate_help(0, CMD_LIST, "helpme")
             result = builder.article(
                 "© Userbot Help",
-                text="{}\nCurrently Loaded Plugins: {}".format(query, len(CMD_LIST)),
+                text="{}\nPlugin Presenti: {}".format(query, len(CMD_LIST)),
                 buttons=buttons,
                 link_preview=False,
             )
         if query == "stats":
            result = builder.article(
            title="Stats",
-           text=f"**Showing Stats For {DEFAULTUSER}'s Friday** \nNote --> Only Owner Can Check This \n(C) @FridayOT",
+           text=f"**Statistiche di {DEFAULTUSER} ** \n",
            buttons = [
-                   [custom.Button.inline("Show Stats 🚶", data="terminator")],
-                   [Button.url("Repo 🛡️", "https://github.com/StarkGang/FridayUserbot")],
-                   [Button.url("Join Channel 📃", "t.me/Fridayot")],
+                   [custom.Button.inline("Mostra Statistiche 🚶", data="terminator")],
              ]
          )
         await event.answer([result] if result else None)
@@ -45,7 +43,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_popp_up_alert = "Please get your own Userbot, and don't use mine!"
+            reply_popp_up_alert = "Fatti un tuo UserBot!"
             await event.answer(reply_popp_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(
@@ -62,7 +60,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             # https://t.me/TelethonChat/115200
             await event.edit(buttons=buttons)
         else:
-            reply_pop_up_alert = "Please get your own Userbot, and don't use mine!"
+            reply_pop_up_alert = "Fatti un tuo UserBot!"
             await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
 
     @tgbot.on(
@@ -81,20 +79,20 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
             except:
                 pass
             if help_string is "":
-                reply_pop_up_alert = "{} is useless".format(plugin_name)
+                reply_pop_up_alert = "{} è inutile".format(plugin_name)
             else:
                 reply_pop_up_alert = help_string
-            reply_pop_up_alert += "\n Use .unload {} to remove this plugin\n\
+            reply_pop_up_alert += "\n Usa .unload {} per rimuovere questo Plugin\n\
                 © Userbot".format(
                 plugin_name
             )
             try:
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
             except:
-                halps = "Do .help {} to get the list of commands.".format(plugin_name)
+                halps = "Fai .help {} per una lista di comandi.".format(plugin_name)
                 await event.answer(halps, cache_time=0, alert=True)
         else:
-            reply_pop_up_alert = "Please get your own Userbot, and don't use mine!"
+            reply_pop_up_alert = "Fatti un UserBot tuo!"
 
     @tgbot.on(events.callbackquery.CallbackQuery(data=re.compile(b"terminator")))
     async def rip(event):
@@ -102,7 +100,7 @@ if Var.TG_BOT_USER_NAME_BF_HER is not None and tgbot is not None:
                 text = inlinestats
                 await event.answer(text, alert=True)
             else:
-                txt = "You Can't View My Masters Stats"
+                txt = "Non puoi vedere le mie informazioni"
                 await event.answer(txt, alert=True)
                 
 def paginate_help(page_number, loaded_plugins, prefix):
@@ -130,10 +128,10 @@ def paginate_help(page_number, loaded_plugins, prefix):
         ] + [
             (
                 custom.Button.inline(
-                    "Previous", data="{}_prev({})".format(prefix, modulo_page)
+                    "Precedente", data="{}_prev({})".format(prefix, modulo_page)
                 ),
                 custom.Button.inline(
-                    "Next", data="{}_next({})".format(prefix, modulo_page)
+                    "Prossimo", data="{}_next({})".format(prefix, modulo_page)
                 ),
             )
         ]

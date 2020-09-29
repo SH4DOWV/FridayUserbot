@@ -17,47 +17,47 @@ hmmok = Config.LYDIA_API
 currentversion = "3.0"
 
 if issudousing:
-    amiusingsudo = "Active ✅"
+    amiusingsudo = "Attivo ✅"
 else:
-    amiusingsudo = "Inactive ❌"
+    amiusingsudo = "Inattivo ❌"
 
 if islogokay:
-    logchat = "Connected ✅"
+    logchat = "Connesso ✅"
 else:
-    logchat = "Dis-Connected ❌"
+    logchat = "Disconnesso ❌"
 
 if isherokuokay:
-    riplife = "Connected ✅"
+    riplife = "Connesso ✅"
 else:
-    riplife = "Not Connected ❌"
+    riplife = "Disconnesso ❌"
 
 if gdriveisshit:
-    wearenoob = "Active ✅"
+    wearenoob = "Attivo ✅"
 else:
-    wearenoob = "Inactive ❌"
+    wearenoob = "Inattivo ❌"
 
 if rmbg:
-    gendu = "Added ✅"
+    gendu = "Aggiunto ✅"
 else:
-    gendu = "Not Added ❌"
+    gendu = "Non Aggiunto ❌"
 
 if wttrapi:
-    starknoobs = "Added ✅"
+    starknoobs = "Aggiunto ✅"
 else:
-    starknoobs = "Not Added ❌"
+    starknoobs = "Non Aggiunto ❌"
 
 if hmmok:
-    meiko = "Added ✅"
+    meiko = "Aggiunto ✅"
 else:
-    meiko = "Not Added ❌"
+    meiko = "Non Aggiunto ❌"
 
 if isdbfine:
-    dbstats = "Fine ✅"
+    dbstats = "Funzionante ✅"
 else:
-    dbstats = "Not Fine ❌"
+    dbstats = "Non Funzionante ❌"
 
-inlinestats = (f"✘ SHOWING FRIDAY STATS ✘\n"
-               f"VERSION = {currentversion} \n"
+inlinestats = (f"✘ STATISTICHE ✘\n"
+               f"VERSIONE = {currentversion} \n"
                f"DATABASE = {dbstats} \n"
                f"SUDO = {amiusingsudo} \n"
                f"LOG-CHAT = {logchat} \n"
